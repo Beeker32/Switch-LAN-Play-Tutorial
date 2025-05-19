@@ -6,118 +6,79 @@
   <title>LAN-Play Guide by Beeker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="dark">
   <header>
     <h1>LAN-Play Guide by Beeker</h1>
     <p>Last updated: May 19th, 2025</p>
-    <button id="theme-toggle">Toggle Theme</button>
+    <button id="theme-toggle">Toggle Dark/Light Mode</button>
   </header>
 
   <main>
     <section>
-      <h2>Introduction</h2>
-      <p>This pack contains the latest files required.</p>
-      <p><strong>Note:</strong> Any commands will be within brackets. Do not copy & paste the brackets, only the command within.</p>
-      <p>For example:<br>
-      "sudo apt update"<br>
-      Would be:<br>
-      <code>sudo apt update</code></p>
+      <h2>Downloads</h2>
+      <ul>
+        <li><a href="https://raw.githubusercontent.com/Beeker32/Switch-LAN-Play-Tutorial/main/Linux/lan-play-linux" download>Linux: lan-play-linux</a></li>
+        <li><a href="https://raw.githubusercontent.com/Beeker32/Switch-LAN-Play-Tutorial/main/MacOS/lan-play-macos" download>macOS: lan-play-macos</a></li>
+        <li><a href="https://raw.githubusercontent.com/Beeker32/Switch-LAN-Play-Tutorial/main/Windows/lan-play.exe" download>Windows: lan-play.exe</a></li>
+        <li><a href="https://raw.githubusercontent.com/Beeker32/Switch-LAN-Play-Tutorial/main/Windows/WinPcap.exe" download>Windows: WinPcap.exe</a></li>
+      </ul>
     </section>
 
     <section>
-      <h2>Step 1: Initial Setup</h2>
-      <p><strong>Running for the first time?</strong> If yes, follow the instructions for your operating system. If not, skip this step.</p>
-
-      <h3>Windows 10/11</h3>
+      <h2>Step 1: First Time Setup</h2>
+      <h3>Windows</h3>
       <ul>
-        <li>Run the <code>WinPcap.exe</code> installer.</li>
-        <li>Ensure "Run driver on boot up" is checked.</li>
+        <li>Run <code>WinPcap.exe</code> and check "Run driver on boot up"</li>
       </ul>
-
       <h3>macOS</h3>
       <ul>
-        <li>Install Homebrew from <a href="https://brew.sh/">https://brew.sh/</a>.</li>
-        <li>Run the following command in Terminal:<br>
-        <code>brew install libpcap libuv switch-lan-play</code></li>
+        <li>Install Homebrew from <a href="https://brew.sh/">brew.sh</a></li>
+        <li><code>brew install libpcap libuv switch-lan-play</code></li>
       </ul>
-
-      <h3>Debian/Ubuntu</h3>
+      <h3>Linux (Debian/Ubuntu)</h3>
       <ul>
-        <li>Open Terminal in the Linux folder provided in this guide.</li>
-        <li>Run:<br>
-        <code>sudo apt install libpcap0.8 libuv1</code></li>
-        <li>Then:<br>
-        <code>chmod +x lan-play-Linux</code></li>
+        <li><code>sudo apt install libpcap0.8 libuv1</code></li>
+        <li><code>chmod +x lan-play-linux</code></li>
       </ul>
     </section>
 
     <section>
       <h2>Step 2: Running LAN-Play</h2>
-
-      <h3>Windows 10/11</h3>
       <ul>
-        <li>Run <code>lan-play.exe</code>.</li>
-      </ul>
-
-      <h3>macOS</h3>
-      <ul>
-        <li>Run in Terminal:<br>
-        <code>sudo lan-play</code></li>
-      </ul>
-
-      <h3>Debian/Ubuntu</h3>
-      <ul>
-        <li>Run in Terminal:<br>
-        <code>sudo ./lan-play-Linux</code></li>
+        <li>Windows: run <code>lan-play.exe</code></li>
+        <li>macOS: run <code>sudo lan-play</code> in terminal</li>
+        <li>Linux: run <code>sudo ./lan-play-linux</code> in terminal</li>
       </ul>
     </section>
 
     <section>
-      <h2>Step 3: Selecting a Server</h2>
-      <p>You can find servers here: <a href="http://lan-play.com/">http://lan-play.com/</a></p>
-      <p><strong>Note:</strong> Ensure you and your friend use the same server.</p>
+      <h2>Step 3: Pick a Server</h2>
+      <p>Visit <a href="http://lan-play.com/">http://lan-play.com/</a> and choose the same server as your friend.</p>
     </section>
 
     <section>
-      <h2>Step 4: Configuring Your Switch</h2>
-      <p>You need to manually edit the configuration of your local network with the following information:</p>
+      <h2>Step 4: Configure Your Switch's Network Settings</h2>
       <ul>
-        <li><strong>IP Address:</strong> 10.13.XX.YY (Choose any from 10.13.0.1 to 10.13.255.254, except 10.13.37.1. Do not use the same IP as your friend.)</li>
-        <li><strong>Subnet Mask:</strong> 255.255.0.0</li>
-        <li><strong>Gateway:</strong> 10.13.37.1</li>
+        <li>IP Address: <code>10.13.XX.YY</code> (Don't use <code>10.13.37.1</code>, and don't use the same IP as your friend)</li>
+        <li>Subnet Mask: <code>255.255.0.0</code></li>
+        <li>Gateway: <code>10.13.37.1</code></li>
       </ul>
     </section>
 
     <section>
-      <h2>Step 5: Resetting Network Settings</h2>
-      <p>Done playing? On your Switch's network settings, click "Reset to Default".</p>
+      <h2>Are You Done Playing?</h2>
+      <p>On your Switch, reset your network settings to default.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Beeker</p>
+    <p>Beeker's LAN-Play Guide &copy; 2025</p>
   </footer>
 
   <script>
-    // Theme toggle functionality
-    const toggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      body.classList.add(savedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      body.classList.add('dark-mode');
-    }
-
-    toggleButton.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark-mode');
-      } else {
-        localStorage.setItem('theme', '');
-      }
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
     });
   </script>
 </body>
